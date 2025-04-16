@@ -2,9 +2,10 @@ import RPi.GPIO as GPIO
 import sys
 GPIO.setmode(GPIO.BCM)
 dac = [8,11,7,1,0,5,12,6]
-GPIO.setup(24,GPIO.OUT)
+GPIO.setup(27,0)
+GPIO.setup(dac,GPIO.OUT,initial=GPIO.HIGH)
 
-pwm= GPIO.PWM(24,1000)
+pwm= GPIO.PWM(27,1000)
 try:
         while True:
             DutyCicle = int(input())
@@ -14,6 +15,6 @@ try:
 
 
 finally:
-    GPIO.output(24,0)
+    GPIO.output(27,0)
     GPIO.output(dac,0)
     GPIO.cleanup()
